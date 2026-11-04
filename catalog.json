@@ -1,0 +1,1950 @@
+{
+  "version": 1,
+  "product": "CritPass",
+  "pass_bar": 80,
+  "bands": [
+    "A+",
+    "A",
+    "A-",
+    "B+",
+    "B",
+    "B-",
+    "C+",
+    "C",
+    "C-",
+    "D+",
+    "D",
+    "D-",
+    "F"
+  ],
+  "views": {
+    "matcap_front": "Matcap front view",
+    "matcap_34": "Matcap three-quarter view",
+    "matcap_side": "Matcap side view",
+    "matcap_top": "Matcap top view",
+    "wire_front": "Wireframe front view",
+    "wire_34": "Wireframe three-quarter view",
+    "silhouette": "Silhouette beside the reference",
+    "closeup_1": "Close-up 1 (densest area)",
+    "closeup_2": "Close-up 2",
+    "closeup_3": "Close-up 3",
+    "closeup_4": "Close-up 4",
+    "closeup_5": "Close-up 5",
+    "sheet_1": "Contact sheet 1",
+    "sheet_2": "Contact sheet 2",
+    "sheet_3": "Contact sheet 3",
+    "sheet_4": "Contact sheet 4",
+    "sheet_5": "Contact sheet 5",
+    "sheet_6": "Contact sheet 6",
+    "pose_1": "Key pose 1",
+    "pose_2": "Key pose 2",
+    "pose_3": "Key pose 3",
+    "pose_4": "Key pose 4",
+    "pose_5": "Key pose 5",
+    "pose_6": "Key pose 6"
+  },
+  "capture": {
+    "modeling": [
+      "matcap_front",
+      "matcap_34",
+      "matcap_side",
+      "matcap_top",
+      "wire_front",
+      "wire_34",
+      "silhouette"
+    ],
+    "modeling_deep_extra": [
+      "closeup_1",
+      "closeup_2",
+      "closeup_3",
+      "closeup_4",
+      "closeup_5"
+    ],
+    "modeling_quick": [
+      "matcap_34",
+      "wire_34",
+      "silhouette"
+    ],
+    "animation": [
+      "sheet_1",
+      "sheet_2",
+      "sheet_3",
+      "pose_1",
+      "pose_2",
+      "pose_3",
+      "pose_4"
+    ],
+    "animation_deep": [
+      "sheet_1",
+      "sheet_2",
+      "sheet_3",
+      "sheet_4",
+      "sheet_5",
+      "sheet_6",
+      "pose_1",
+      "pose_2",
+      "pose_3",
+      "pose_4",
+      "pose_5",
+      "pose_6"
+    ],
+    "animation_quick": [
+      "sheet_1",
+      "sheet_2",
+      "sheet_3"
+    ]
+  },
+  "challenges": [
+    {
+      "id": "low-poly-mug",
+      "kind": "modeling",
+      "order": 1,
+      "title": "Low-poly mug",
+      "target_query": "low poly mug blender exercise",
+      "difficulty": "Beginner",
+      "summary": "9-11 cm tall, <= 800 faces, 0 n-gons",
+      "description": "Model a coffee mug to spec: 9-11 cm tall, 800 faces or fewer, no n-gons. Free rubric, free topology check in your browser, AI review for $9.",
+      "brief": [
+        "Model a plain coffee mug: a round body with real wall thickness, a flat base, a rolled or squared rim and a handle that joins the body cleanly at both ends.",
+        "Keep it light. The whole mug fits in 800 faces with no n-gons, and at least 85% of the faces are quads. Make it watertight: no open edges, no holes where the handle meets the body.",
+        "Build it at real-world scale: 9 to 11 cm tall, with the body about 8 cm across. Export it as OBJ with triangulation off so your quads stay quads."
+      ],
+      "reference": {
+        "svg": "assets/ref/low-poly-mug.svg",
+        "alt": "Reference silhouette for Low-poly mug: front and side outlines of a straight-sided mug about 10 cm tall and 8 cm wide, with a C-shaped handle on the right.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Height",
+            "min": 9,
+            "max": 11,
+            "unit": "cm"
+          }
+        ],
+        "face_budget": 800,
+        "max_ngons": 0,
+        "quad_share_min": 0.85,
+        "max_poles5": 16,
+        "max_nonmanifold": 0,
+        "max_boundary": 0
+      },
+      "spec_list": [
+        "Height: 9-11 cm (body about 8 cm across)",
+        "Faces: 800 or fewer",
+        "N-gons: 0; quads: at least 85% of faces",
+        "Closed mesh: 0 open edges, 0 non-manifold edges",
+        "Poles with 5 or more edges: 16 or fewer",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the face budget, no n-gons, mostly quads, closed, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "Reads as a mug from every view: the body, rim and handle are in proportion to the reference, and round parts look round.",
+          "descriptors": {
+            "10": "Matches the reference proportions; the body is evenly round and the handle sits at a natural height and size.",
+            "7": "Clearly a mug with one proportion off, such as a handle too thin or a body slightly too tall.",
+            "4": "Recognisable but faceted or lopsided; the handle is too small, too large or misplaced.",
+            "0": "Does not read as a mug."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Has wall thickness, a flat base, a defined rim and a handle joined at both ends.",
+          "descriptors": {
+            "10": "All four brief features are present and clearly modelled.",
+            "7": "One feature is weak, such as a rim with no definition or a base that is not flat.",
+            "4": "One feature is missing, such as no wall thickness or a handle that floats.",
+            "0": "Two or more features are missing."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Smooth, even shading on the matcap: no pinching, dents, stretched faces or visible creases where the handle joins.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease, usually at the handle joins.",
+            "4": "Visible dents, pinching or faceting on the body or rim.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Loops follow the round body and run cleanly around the handle joins; poles sit on flat areas.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the mug in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the mug.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the mug.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "zbrush": [
+          "Go to your lowest subdivision level (Geometry > SDiv 1).",
+          "Tool > Export and save as .obj."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "rounded-cube-holding-edges",
+      "kind": "modeling",
+      "order": 2,
+      "title": "Rounded cube, holding edges",
+      "target_query": "blender subdivision modeling exercise",
+      "difficulty": "Beginner",
+      "summary": "8 cm cube, crisp edges under subdivision, <= 600 faces",
+      "description": "Model an 8 cm cube that keeps crisp, evenly rounded edges under subdivision, using support loops only. Free topology check, AI review for $9.",
+      "brief": [
+        "Model a cube about 8 cm on each side that stays a cube when subdivided: every edge rounds by the same small radius, the faces stay flat and the corners stay tidy.",
+        "Hold the edges with support loops (edge loops placed close to each edge), not with creases or bevel weights, so the shape lives in the topology itself. Export the cage (Subdivision modifier off), all quads.",
+        "Keep it under 600 faces, with no n-gons and no triangles. Each corner meets in a clean three-edge pole."
+      ],
+      "reference": {
+        "svg": "assets/ref/rounded-cube-holding-edges.svg",
+        "alt": "Reference silhouette for Rounded cube, holding edges: front and three-quarter outlines of an 8 cm cube with slightly rounded edges and support loops drawn close to each edge.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Height",
+            "min": 7.5,
+            "max": 8.5,
+            "unit": "cm"
+          }
+        ],
+        "face_budget": 600,
+        "max_ngons": 0,
+        "quad_share_min": 1.0,
+        "max_poles5": 0,
+        "max_nonmanifold": 0,
+        "max_boundary": 0
+      },
+      "spec_list": [
+        "Size: 7.5-8.5 cm on each side",
+        "Faces: 600 or fewer (the cage, Subdivision off)",
+        "All quads: 0 n-gons, 0 triangles",
+        "Poles with 5 or more edges: 0",
+        "Closed mesh: 0 open edges, 0 non-manifold edges",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the budget, no n-gons over the limit, mostly quads, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "Still reads as a cube: flat faces, straight edges, the same small radius on all twelve edges once subdivided.",
+          "descriptors": {
+            "10": "Flat faces and an even, small radius on every edge.",
+            "7": "Cube-like, with one edge softer or sharper than the rest.",
+            "4": "Pillowy faces or very uneven edge radii.",
+            "0": "Reads as a blob, not a cube."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Edges held by support loops alone (no creases), all quads, a clean cage exported with the modifier off.",
+          "descriptors": {
+            "10": "Support loops on every edge, no creases, a clean cage.",
+            "7": "Loops on most edges; one edge relies on spacing that is too wide.",
+            "4": "Creases or bevel weights used, or an applied subdivision exported.",
+            "0": "No support loops at all."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Even highlights along every rounded edge; no pinching at the corners and no ripples on the flat faces.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease in one area.",
+            "4": "Visible dents, pinching or faceting across a main surface.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Support loops run parallel to each edge at an even distance; corner poles are tidy three-edge poles.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the cube in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the cube.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the cube.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "zbrush": [
+          "Go to your lowest subdivision level (Geometry > SDiv 1).",
+          "Tool > Export and save as .obj."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "chair-to-dimensions",
+      "kind": "modeling",
+      "order": 3,
+      "title": "Chair to dimensions",
+      "target_query": "blender chair modeling exercise",
+      "difficulty": "Intermediate",
+      "summary": "45 cm seat, 80-90 cm tall, <= 2,000 faces",
+      "description": "Model a dining chair to real dimensions: 45 cm seat height, 80-90 cm overall, 2,000 faces or fewer. Free topology and size check, AI review for $9.",
+      "brief": [
+        "Model a simple wooden dining chair from an orthographic brief: four legs, a seat, a backrest with two uprights and at least one cross rail.",
+        "Work to real dimensions: the top of the seat sits 45 cm above the floor, the seat is about 42-45 cm wide and deep, and the chair is 80-90 cm tall overall. The page measures the height from your OBJ.",
+        "Keep it to 2,000 faces with no n-gons. Separate parts may be separate pieces, but each must be closed with no stray faces."
+      ],
+      "reference": {
+        "svg": "assets/ref/chair-to-dimensions.svg",
+        "alt": "Reference silhouette for Chair to dimensions: front and side outlines of a dining chair 85 cm tall with the seat top marked at 45 cm, four straight legs and a backrest with a cross rail.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Height",
+            "min": 80,
+            "max": 90,
+            "unit": "cm"
+          }
+        ],
+        "face_budget": 2000,
+        "max_ngons": 0,
+        "quad_share_min": 0.85,
+        "max_poles5": 40,
+        "max_nonmanifold": 0,
+        "max_boundary": 0
+      },
+      "spec_list": [
+        "Overall height: 80-90 cm",
+        "Seat top: 45 cm above the floor; seat about 42-45 cm wide and deep",
+        "Faces: 2,000 or fewer",
+        "N-gons: 0; quads: at least 85% of faces",
+        "Every part closed: 0 open edges, 0 non-manifold edges",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the budget, no n-gons over the limit, mostly quads, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "Proportions of a real dining chair: seat at 45 cm, a backrest a little taller than the seat is high, legs of believable thickness.",
+          "descriptors": {
+            "10": "Matches the reference proportions in front and side view.",
+            "7": "One proportion off, such as legs too thin or a backrest too short.",
+            "4": "Several proportions off; it reads as a stool or a throne.",
+            "0": "Does not read as a chair."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Four legs, a seat, two uprights and a cross rail, built at real scale with parts that meet cleanly.",
+          "descriptors": {
+            "10": "Every listed part is present and meets the next cleanly.",
+            "7": "All parts present; one joint floats or overlaps badly.",
+            "4": "A listed part is missing or the scale is clearly wrong.",
+            "0": "Two or more parts missing."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Clean shading on the seat and rails; bevelled edges catch the light evenly; no smoothing artefacts on flat parts.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease in one area.",
+            "4": "Visible dents, pinching or faceting across a main surface.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Loops follow each part's length; bevels are supported so flat faces stay flat.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the chair in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the chair.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the chair.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "zbrush": [
+          "Go to your lowest subdivision level (Geometry > SDiv 1).",
+          "Tool > Export and save as .obj."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "sci-fi-crate",
+      "kind": "modeling",
+      "order": 4,
+      "title": "Sci-fi crate",
+      "target_query": "hard surface modeling practice",
+      "difficulty": "Intermediate",
+      "summary": "60 cm crate, panels and bevels, <= 3,000 faces",
+      "description": "Model a hard-surface sci-fi crate: a 60 cm box with inset panels, bevelled edges and greebles, 3,000 faces or fewer. AI review for $9.",
+      "brief": [
+        "Model a sci-fi cargo crate: a box about 60 cm on each side with inset or raised panels on every visible face, bevelled outer edges and a few functional-looking details (handles, latches, vents).",
+        "This is hard-surface practice: flat surfaces must shade flat, every bevel must catch the light evenly, and details should look manufactured, not random.",
+        "Keep it under 3,000 faces with no more than 10 n-gons, and only on flat faces where they cannot cause shading problems."
+      ],
+      "reference": {
+        "svg": "assets/ref/sci-fi-crate.svg",
+        "alt": "Reference silhouette for Sci-fi crate: front and three-quarter outlines of a 60 cm cube with chamfered edges, inset panels on each face and two side handles.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Height",
+            "min": 50,
+            "max": 70,
+            "unit": "cm"
+          }
+        ],
+        "face_budget": 3000,
+        "max_ngons": 10,
+        "quad_share_min": 0.7,
+        "max_nonmanifold": 0
+      },
+      "spec_list": [
+        "Size: about 60 cm (height 50-70 cm)",
+        "Faces: 3,000 or fewer",
+        "N-gons: 10 or fewer, on flat faces only; quads: at least 70%",
+        "0 non-manifold edges",
+        "Panels or insets on every visible face, bevelled outer edges",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the budget, no n-gons over the limit, mostly quads, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "A strong, readable crate shape with a clear hierarchy of large panels, medium details and small greebles.",
+          "descriptors": {
+            "10": "Clear shape and a clear large, medium, small detail hierarchy.",
+            "7": "Readable crate; details all the same size or crowded.",
+            "4": "Plain box with scattered detail, or details that break the silhouette.",
+            "0": "Not readable as a crate."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Panels on every visible face, bevelled outer edges and at least two functional details such as handles or latches.",
+          "descriptors": {
+            "10": "Every face panelled, edges bevelled, details that look functional.",
+            "7": "One face plain or one detail type missing.",
+            "4": "Edges unbevelled or most faces plain.",
+            "0": "A plain box."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Flat faces shade flat, bevels catch even highlights, no smoothing smears across panels or around insets.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease in one area.",
+            "4": "Visible dents, pinching or faceting across a main surface.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Bevels are held with support or weighted normals; insets terminate cleanly without long thin triangles.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the crate in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the crate.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the crate.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "zbrush": [
+          "Go to your lowest subdivision level (Geometry > SDiv 1).",
+          "Tool > Export and save as .obj."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "low-poly-sword",
+      "kind": "modeling",
+      "order": 5,
+      "title": "Low-poly sword",
+      "target_query": "low poly sword modeling challenge",
+      "difficulty": "Intermediate",
+      "summary": "90-110 cm game sword, <= 1,500 tris",
+      "description": "Model a game-ready low-poly sword: 90-110 cm long, 1,500 triangles or fewer, polygons spent where the silhouette needs them. AI review for $9.",
+      "brief": [
+        "Model a one-handed or hand-and-a-half sword as a game asset: blade, crossguard, grip and pommel, 90 to 110 cm long in total.",
+        "The budget is 1,500 triangles once triangulated, so spend polygons on what reads at game distance: the blade's taper and edge bevel, the guard's shape and the pommel. Hide nothing: no faces buried inside other parts.",
+        "N-gons are fine on flat areas of the blade (up to 20). Keep every part closed."
+      ],
+      "reference": {
+        "svg": "assets/ref/low-poly-sword.svg",
+        "alt": "Reference silhouette for Low-poly sword: a front outline of a 100 cm sword lying horizontally, with a tapered double-edged blade, a straight crossguard, a wrapped grip and a round pommel.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Length (Y)",
+            "min": 90,
+            "max": 110,
+            "unit": "cm"
+          }
+        ],
+        "tri_budget": 1500,
+        "max_ngons": 20,
+        "quad_share_min": 0.5,
+        "max_nonmanifold": 0
+      },
+      "spec_list": [
+        "Length: 90-110 cm, standing upright (Y up)",
+        "Triangles once triangulated: 1,500 or fewer",
+        "N-gons: 20 or fewer, flat areas only; quads: at least 50%",
+        "0 non-manifold edges",
+        "Blade, crossguard, grip and pommel",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the budget, no n-gons over the limit, mostly quads, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "Reads as a sword at a glance: a tapered blade, a guard wide enough to protect the hand, a grip about one and a half hands long, a pommel that balances it.",
+          "descriptors": {
+            "10": "Strong silhouette with believable proportions.",
+            "7": "Readable, with one part out of proportion.",
+            "4": "Stubby, flat or unbalanced; parts out of scale.",
+            "0": "Not readable as a sword."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "All four parts present, budget spent on visible shape, nothing hidden inside other parts.",
+          "descriptors": {
+            "10": "Every part present and the budget spent where it shows.",
+            "7": "All parts present; polygons wasted on one hidden or flat area.",
+            "4": "A part missing or many wasted faces.",
+            "0": "Two parts missing."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "The blade's edge bevel and fuller shade cleanly; no smoothing smears across the flat of the blade; the grip reads as round.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease in one area.",
+            "4": "Visible dents, pinching or faceting across a main surface.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Edge loops follow the blade taper; the guard and pommel use as few segments as their shape needs.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the sword in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the sword.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the sword.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "low-poly-tree",
+      "kind": "modeling",
+      "order": 6,
+      "title": "Low-poly tree",
+      "target_query": "low poly tree blender practice",
+      "difficulty": "Beginner",
+      "summary": "Stylized tree 3-6 m tall, <= 500 tris",
+      "description": "Model a stylized low-poly tree, 3-6 m tall, in 500 triangles or fewer: trunk, branches and faceted canopy. AI review for $9.",
+      "brief": [
+        "Model a stylized low-poly tree: a trunk that flares at the base, two to four visible branches and a canopy of faceted clumps.",
+        "Make every triangle count: the whole tree fits in 500 triangles once triangulated. The faceted look is the style, so flat shading is expected; what matters is a readable, appealing shape.",
+        "Build it at 3 to 6 metres tall. Clumps may intersect, but no face may be left open where the camera can see inside."
+      ],
+      "reference": {
+        "svg": "assets/ref/low-poly-tree.svg",
+        "alt": "Reference silhouette for Low-poly tree: a front outline of a 4 m stylized tree with a flared trunk, three branches and a canopy made of four faceted clumps.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "dimensions": [
+          {
+            "axis": "y",
+            "label": "Height",
+            "min": 300,
+            "max": 600,
+            "unit": "cm"
+          }
+        ],
+        "tri_budget": 500,
+        "max_ngons": 10,
+        "quad_share_min": 0.0,
+        "max_nonmanifold": 0
+      },
+      "spec_list": [
+        "Height: 3-6 m",
+        "Triangles once triangulated: 500 or fewer",
+        "N-gons: 10 or fewer",
+        "0 non-manifold edges",
+        "Trunk, 2-4 branches, faceted canopy clumps",
+        "Export: OBJ, Triangulate Faces off"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "topology",
+          "title": "Topology, measured",
+          "weight": 20,
+          "grader": "measured",
+          "good": "Within the budget, no n-gons over the limit, mostly quads, no non-manifold edges, at the right size.",
+          "descriptors": {
+            "10": "Every measured check passes.",
+            "7": "One small miss, such as a few poles over the limit or slightly off the size range.",
+            "4": "Several misses: over budget, n-gons present or open edges.",
+            "0": "Most checks fail."
+          }
+        },
+        {
+          "id": "silhouette",
+          "title": "Silhouette and proportion",
+          "weight": 30,
+          "grader": "ai",
+          "good": "An appealing tree shape at a distance: a canopy wider than the trunk is tall, clumps of varied size, a trunk that tapers and flares.",
+          "descriptors": {
+            "10": "Appealing, varied silhouette that reads from any angle.",
+            "7": "Readable tree with a symmetrical or blobby canopy.",
+            "4": "Lollipop shape or a trunk out of scale.",
+            "0": "Not readable as a tree."
+          }
+        },
+        {
+          "id": "brief",
+          "title": "Brief compliance",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Flared trunk, two to four branches, faceted canopy clumps, built at 3-6 m.",
+          "descriptors": {
+            "10": "Every listed element present and clearly shaped.",
+            "7": "One element weak, such as branches hidden by the canopy.",
+            "4": "One element missing.",
+            "0": "Two or more elements missing."
+          }
+        },
+        {
+          "id": "shading",
+          "title": "Shading artefacts",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Facets read as deliberate style: no stretched slivers, no inverted normals, no holes where clumps meet the trunk.",
+          "descriptors": {
+            "10": "Clean shading in every view.",
+            "7": "A small pinch or crease in one area.",
+            "4": "Visible dents, pinching or faceting across a main surface.",
+            "0": "Shading is broken across most of the model."
+          }
+        },
+        {
+          "id": "edge_flow",
+          "title": "Edge flow, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Few, purposeful edges; clumps share a consistent facet size.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Select the tree in Object Mode.",
+          "File > Export > Wavefront (.obj).",
+          "Turn on Selection Only (Limit to: Selected Only in Blender 4), leave Triangulate Faces off (Triangulated Mesh) and keep Apply Modifiers on.",
+          "Keep Scale at 1.00 and the default axes (Y up)."
+        ],
+        "maya": [
+          "Windows > Settings/Preferences > Plug-in Manager: tick Loaded for objExport.mll.",
+          "Select the tree.",
+          "File > Export Selection, Files of type: OBJexport.",
+          "Leave Materials off; your scene units (cm) are kept."
+        ],
+        "3dsmax": [
+          "Select the tree.",
+          "File > Export > Export Selected, Save as type: gw::OBJ-Exporter (*.OBJ).",
+          "In the exporter: Faces: Polygons (not Triangles) and Flip YZ-axis on.",
+          "Check that Scale matches your scene units."
+        ],
+        "other": [
+          "Export Wavefront OBJ with triangulation off, so quads stay quads.",
+          "Export one mesh at real-world scale."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "bouncing-ball",
+      "kind": "animation",
+      "order": 7,
+      "title": "Bouncing ball",
+      "target_query": "bouncing ball animation exercise",
+      "difficulty": "Beginner",
+      "summary": "3 bounces, 48-96 frames at 24 fps, side view",
+      "description": "Animate a ball dropping and bouncing three times with decay, squash and stretch: 48-96 frames at 24 fps. Free contact sheets, AI review for $9.",
+      "brief": [
+        "Animate a ball dropping from the top of the frame and bouncing three times, losing height on every bounce until it settles or rolls out.",
+        "Show the physics: the ball slows into each apex and speeds into each contact, squashes on contact and stretches on the fast frames around it, and its path makes clean, decaying arcs.",
+        "Keep the camera still and side-on, the ball fully in frame, 48 to 96 frames at 24 fps. Playblast to MP4 (H.264) or a PNG sequence."
+      ],
+      "reference": {
+        "svg": "assets/ref/bouncing-ball.svg",
+        "alt": "Reference motion diagram for Bouncing ball: three decaying arcs from left to right, with spacing dots close together at each apex and far apart near each contact, and frame ticks under the floor line.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 48,
+        "frames_max": 96,
+        "camera": "side",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Start, top of the drop"
+          },
+          {
+            "frame": 13,
+            "label": "First contact, squash"
+          },
+          {
+            "frame": 24,
+            "label": "First rebound apex"
+          },
+          {
+            "frame": 33,
+            "label": "Second contact"
+          },
+          {
+            "frame": 40,
+            "label": "Second apex"
+          },
+          {
+            "frame": 46,
+            "label": "Third contact"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 48-96 frames at 24 fps (2-4 s)",
+        "Three bounces, each lower than the last",
+        "Squash on contact, stretch on the fast frames",
+        "Still, side-on camera; ball fully in frame",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "48-96 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "timing",
+          "title": "Timing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Each bounce takes less time than the one before; the ball hangs at each apex and is quick through each contact.",
+          "descriptors": {
+            "10": "Bounce durations shrink steadily and feel like gravity.",
+            "7": "Mostly right, with one bounce too long or too even.",
+            "4": "Bounces take about the same time, so the ball feels weightless or mechanical.",
+            "0": "No sense of gravity in the timing."
+          }
+        },
+        {
+          "id": "spacing",
+          "title": "Spacing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Positions bunch up near each apex and spread out near each contact (slow in, slow out at the top; fast at the bottom).",
+          "descriptors": {
+            "10": "Clear ease into and out of every apex, wide spacing at contacts.",
+            "7": "Easing present but uneven on one bounce.",
+            "4": "Even spacing for much of the clip.",
+            "0": "Spacing contradicts the motion, such as slowing into the floor."
+          }
+        },
+        {
+          "id": "squash",
+          "title": "Squash and stretch",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The ball squashes on contact and stretches along its path on the fast frames, keeping its volume.",
+          "descriptors": {
+            "10": "Squash on every contact and stretch on fast frames, with volume kept.",
+            "7": "Present but too strong, too weak or missing on one bounce.",
+            "4": "Only one of squash or stretch, or the ball visibly changes volume.",
+            "0": "None."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs and decay",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The path forms clean parabolic arcs that lose height on every bounce; no wobble or sudden direction change in the air.",
+          "descriptors": {
+            "10": "Smooth arcs, each clearly lower than the last.",
+            "7": "Smooth arcs with uneven decay, or one arc slightly pointed.",
+            "4": "Pointed or lumpy arcs, or bounces that do not decay.",
+            "0": "No readable arcs."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Overlap and polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes on anything beyond the rubric: the settle, a roll-out, contact frames held too long.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time: 24 fps) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (ball_0001.png, ball_0002.png ...).",
+          "24 fps, a still side-on camera, the ball fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "heavy-vs-light-ball",
+      "kind": "animation",
+      "order": 8,
+      "title": "Heavy vs light ball",
+      "target_query": "heavy and light ball animation exercise",
+      "difficulty": "Beginner",
+      "summary": "Two balls, two weights, 72-120 frames at 24 fps",
+      "description": "Animate a bowling ball and a beach ball dropped side by side so each one's weight shows in timing alone: 72-120 frames at 24 fps. AI review for $9.",
+      "brief": [
+        "Animate two balls of the same size dropped from the same height, side by side: a heavy bowling ball and a light beach ball.",
+        "Tell the weight with timing and spacing alone. The bowling ball falls fast, hits hard and barely bounces; the beach ball floats, bounces several times and drifts before it settles.",
+        "Still side-on camera, both balls fully in frame, 72 to 120 frames at 24 fps."
+      ],
+      "reference": {
+        "svg": "assets/ref/heavy-vs-light-ball.svg",
+        "alt": "Reference motion diagram for Heavy vs light ball: two paths from the same height, the heavy ball's dropping straight with one tiny bounce, the light ball's with four tall, slowly decaying arcs.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 72,
+        "frames_max": 120,
+        "camera": "side",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Both released"
+          },
+          {
+            "frame": 14,
+            "label": "Heavy ball lands"
+          },
+          {
+            "frame": 20,
+            "label": "Light ball first contact"
+          },
+          {
+            "frame": 40,
+            "label": "Light ball first rebound apex"
+          },
+          {
+            "frame": 60,
+            "label": "Light ball second contact"
+          },
+          {
+            "frame": 90,
+            "label": "Both at rest"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 72-120 frames at 24 fps (3-5 s)",
+        "Two balls, same size, same drop height",
+        "Heavy ball: fast fall, tiny bounce",
+        "Light ball: slow fall, several floaty bounces",
+        "Still, side-on camera; both balls in frame",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "72-120 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "timing",
+          "title": "Timing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "The heavy ball lands first and settles almost at once; the light ball takes longer to fall and keeps bouncing.",
+          "descriptors": {
+            "10": "Two clearly different weights from timing alone.",
+            "7": "Different weights, but one ball's timing is unconvincing.",
+            "4": "Both balls move with similar timing.",
+            "0": "Timing contradicts the weights."
+          }
+        },
+        {
+          "id": "spacing",
+          "title": "Spacing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "The heavy ball accelerates hard into contact; the light ball eases at each apex and drifts.",
+          "descriptors": {
+            "10": "Spacing sells each weight in every phase.",
+            "7": "Mostly right, with one phase evenly spaced.",
+            "4": "Even spacing on one of the balls for most of the clip.",
+            "0": "Spacing contradicts the weights."
+          }
+        },
+        {
+          "id": "weight",
+          "title": "Weight and contact",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The bowling ball hits with almost no squash and a heavy stop; the beach ball squashes softly and rebounds.",
+          "descriptors": {
+            "10": "Contacts feel heavy and light as intended.",
+            "7": "One contact unconvincing.",
+            "4": "Both contacts feel the same.",
+            "0": "No sense of contact."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs and decay",
+          "weight": 20,
+          "grader": "ai",
+          "good": "Each ball keeps a clean vertical or parabolic path; the light ball's bounces decay steadily.",
+          "descriptors": {
+            "10": "Clean paths and steady decay.",
+            "7": "Clean paths with uneven decay.",
+            "4": "Wobbly paths or bounces that do not decay.",
+            "0": "No readable paths."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes beyond the rubric: the settle, drift, a hold at the end.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (shot_0001.png, shot_0002.png ...).",
+          "24 fps, a still camera, both balls fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "pendulum-follow-through",
+      "kind": "animation",
+      "order": 9,
+      "title": "Pendulum follow-through",
+      "target_query": "pendulum animation exercise",
+      "difficulty": "Intermediate",
+      "summary": "Pendulum with a trailing tail, 48-96 frames at 24 fps",
+      "description": "Animate a swinging pendulum with a flexible tail that drags and overlaps: 48-96 frames at 24 fps. Free contact sheets, AI review for $9.",
+      "brief": [
+        "Animate a pendulum swinging from a fixed pivot, with a flexible tail (three or more joints, or a ribbon) hanging from the weight.",
+        "The pendulum eases at each end of its swing and is fastest at the bottom. The tail lags behind the weight, keeps moving after the weight changes direction and settles in a wave, never moving as one stiff piece.",
+        "Still side-on camera, 48 to 96 frames at 24 fps, at least two full swings."
+      ],
+      "reference": {
+        "svg": "assets/ref/pendulum-follow-through.svg",
+        "alt": "Reference motion diagram for Pendulum follow-through: a pivot with a pendulum arc, spacing dots close at both ends of the arc, and the tail's trailing curve lagging behind the weight at each extreme.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 48,
+        "frames_max": 96,
+        "camera": "side",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Left extreme"
+          },
+          {
+            "frame": 12,
+            "label": "Bottom of the swing, fastest"
+          },
+          {
+            "frame": 24,
+            "label": "Right extreme"
+          },
+          {
+            "frame": 30,
+            "label": "Tail overlaps past the weight"
+          },
+          {
+            "frame": 36,
+            "label": "Bottom, returning"
+          },
+          {
+            "frame": 48,
+            "label": "Left extreme again"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 48-96 frames at 24 fps (2-4 s)",
+        "At least two full swings",
+        "Ease at each extreme, fastest at the bottom",
+        "Tail of three or more joints that drags and overlaps",
+        "Still, side-on camera",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "48-96 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "timing",
+          "title": "Timing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Each swing takes the same time and feels like gravity; extremes have a slight hang.",
+          "descriptors": {
+            "10": "Even, gravity-true swings with a hang at each extreme.",
+            "7": "Mostly right, one swing too fast or too slow.",
+            "4": "Mechanical, constant-speed swinging.",
+            "0": "No sense of a pendulum."
+          }
+        },
+        {
+          "id": "spacing",
+          "title": "Spacing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Close spacing at the extremes, wide spacing through the bottom of the arc.",
+          "descriptors": {
+            "10": "Clear ease in and out at every extreme.",
+            "7": "Easing present but uneven.",
+            "4": "Mostly even spacing.",
+            "0": "Spacing contradicts the motion."
+          }
+        },
+        {
+          "id": "overlap",
+          "title": "Follow-through and overlap",
+          "weight": 30,
+          "grader": "ai",
+          "good": "The tail lags the weight, continues past each change of direction and settles in a wave, joint by joint.",
+          "descriptors": {
+            "10": "Clear drag, overlap and a wave-like settle.",
+            "7": "Drag present, overlap weak at one extreme.",
+            "4": "The tail moves almost as one piece.",
+            "0": "No follow-through."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs",
+          "weight": 10,
+          "grader": "ai",
+          "good": "The weight traces a clean arc; the tail tip traces a smooth looping path.",
+          "descriptors": {
+            "10": "Clean arcs for weight and tail tip.",
+            "7": "Clean weight arc, bumpy tail path.",
+            "4": "Pointed or broken arcs.",
+            "0": "No readable arcs."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes beyond the rubric: tail settle, secondary wobble.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (shot_0001.png, shot_0002.png ...).",
+          "24 fps, a still camera, the whole pendulum fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "flour-sack-jump",
+      "kind": "animation",
+      "order": 10,
+      "title": "Flour sack jump",
+      "target_query": "flour sack animation exercise",
+      "difficulty": "Intermediate",
+      "summary": "Anticipation, jump, landing: 48-96 frames at 24 fps",
+      "description": "Animate a flour sack that anticipates, jumps and lands with weight: 48-96 frames at 24 fps, side view. Free contact sheets, AI review for $9.",
+      "brief": [
+        "Animate a flour sack (a sack shape with two top corners, no face or limbs) crouching, jumping forward and landing.",
+        "Sell it with pose and weight: a clear anticipation crouch that squashes the sack, a stretch on take-off, a readable shape at the top of the arc, and a landing that absorbs the weight before it settles.",
+        "Still side-on camera, 48 to 96 frames at 24 fps."
+      ],
+      "reference": {
+        "svg": "assets/ref/flour-sack-jump.svg",
+        "alt": "Reference motion diagram for Flour sack jump: five simple sack shapes along a timeline, standing, crouched in anticipation, stretched at take-off, airborne at the top of an arc, and squashed on landing.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 48,
+        "frames_max": 96,
+        "camera": "side",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Standing"
+          },
+          {
+            "frame": 12,
+            "label": "Anticipation crouch"
+          },
+          {
+            "frame": 18,
+            "label": "Take-off stretch"
+          },
+          {
+            "frame": 28,
+            "label": "Top of the jump"
+          },
+          {
+            "frame": 38,
+            "label": "Landing squash"
+          },
+          {
+            "frame": 52,
+            "label": "Settle"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 48-96 frames at 24 fps (2-4 s)",
+        "Anticipation crouch, take-off, arc, landing, settle",
+        "Squash and stretch through the body; volume kept",
+        "Sack shape only: no face or limbs",
+        "Still, side-on camera",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "48-96 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "anticipation",
+          "title": "Anticipation",
+          "weight": 25,
+          "grader": "ai",
+          "good": "A crouch big and long enough to read before the jump, in the opposite direction of the action.",
+          "descriptors": {
+            "10": "A clear, well-timed anticipation.",
+            "7": "Present but short or small.",
+            "4": "Barely visible.",
+            "0": "None."
+          }
+        },
+        {
+          "id": "poses",
+          "title": "Poses and squash and stretch",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Strong, readable key poses; the sack squashes and stretches while keeping its volume.",
+          "descriptors": {
+            "10": "Every key pose reads in silhouette; volume kept.",
+            "7": "One weak pose or a volume change.",
+            "4": "Several weak poses or rubbery volume.",
+            "0": "No readable poses."
+          }
+        },
+        {
+          "id": "weight",
+          "title": "Weight and landing",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The landing absorbs the weight: the sack squashes, overshoots slightly and settles.",
+          "descriptors": {
+            "10": "A convincing heavy landing and settle.",
+            "7": "A landing that stops a little abruptly.",
+            "4": "A floaty or stiff landing.",
+            "0": "No landing."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs and timing",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The jump follows a clean arc with ease at the top; take-off and landing are quick.",
+          "descriptors": {
+            "10": "Clean arc with believable timing.",
+            "7": "Clean arc, uneven timing.",
+            "4": "Pointed arc or even timing.",
+            "0": "No readable arc."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes beyond the rubric: corner overlap, a hold before the jump.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (shot_0001.png, shot_0002.png ...).",
+          "24 fps, a still camera, the sack fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "walk-cycle",
+      "kind": "animation",
+      "order": 11,
+      "title": "Walk cycle",
+      "target_query": "walk cycle animation exercise",
+      "difficulty": "Advanced",
+      "summary": "24-frame side-view walk, 24-48 frames at 24 fps",
+      "description": "Animate a 24-frame walk cycle in side view: contact, down, passing and up poses with clean arcs. 24-48 frames at 24 fps. AI review for $9.",
+      "brief": [
+        "Animate a walk cycle in place, side view, on any simple biped rig: one full cycle in 24 frames (two steps of 12), rendered once or twice through.",
+        "Hit the four classic poses on each step: contact, down, passing and up. The hips rise and fall, the arms swing opposite to the legs, and nothing pops when the cycle loops.",
+        "Still side-on camera, the whole body in frame, 24 to 48 frames at 24 fps."
+      ],
+      "reference": {
+        "svg": "assets/ref/walk-cycle.svg",
+        "alt": "Reference motion diagram for Walk cycle: four stick-figure poses in a row, contact, down, passing and up, with the hip height marked by a wavy line and the arm swing opposite to the legs.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 24,
+        "frames_max": 48,
+        "camera": "side",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Contact, right foot forward"
+          },
+          {
+            "frame": 4,
+            "label": "Down"
+          },
+          {
+            "frame": 7,
+            "label": "Passing"
+          },
+          {
+            "frame": 10,
+            "label": "Up"
+          },
+          {
+            "frame": 13,
+            "label": "Contact, left foot forward"
+          },
+          {
+            "frame": 19,
+            "label": "Passing, other side"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 24-48 frames at 24 fps (one or two cycles)",
+        "One cycle = 24 frames, a step every 12",
+        "Contact, down, passing and up on each step",
+        "Opposite arm swing; hips rise and fall",
+        "Loops without a pop; still side-on camera",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "24-48 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "poses",
+          "title": "Key poses",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Contact, down, passing and up are each clear and correctly placed on both steps.",
+          "descriptors": {
+            "10": "All four poses clear on both steps.",
+            "7": "One pose weak on one step.",
+            "4": "Poses blurred together; no clear down or up.",
+            "0": "No readable walk poses."
+          }
+        },
+        {
+          "id": "timing",
+          "title": "Timing and rhythm",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Even 12-frame steps with weight landing on the down pose; a seamless loop.",
+          "descriptors": {
+            "10": "Even rhythm and a seamless loop.",
+            "7": "Even rhythm with a small pop at the loop.",
+            "4": "Uneven steps or a visible pop.",
+            "0": "No rhythm."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs and hip motion",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The hips rise and fall in a smooth wave; hands and feet follow clean arcs.",
+          "descriptors": {
+            "10": "Smooth hip wave and clean arcs.",
+            "7": "Hip wave present, one limb's arc bumpy.",
+            "4": "Flat hips or broken arcs.",
+            "0": "No arcs."
+          }
+        },
+        {
+          "id": "weight",
+          "title": "Weight and balance",
+          "weight": 20,
+          "grader": "ai",
+          "good": "Weight shifts over the supporting foot; arms swing opposite to the legs; no sliding feet.",
+          "descriptors": {
+            "10": "Balanced, grounded walk.",
+            "7": "Grounded with a small slide or stiff arms.",
+            "4": "Sliding feet or arms in sync with legs.",
+            "0": "Floats with no weight."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes beyond the rubric: head bob, toe roll, overlap in the arms.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (shot_0001.png, shot_0002.png ...).",
+          "24 fps, a still camera, the whole body fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    },
+    {
+      "id": "head-turn-anticipation",
+      "kind": "animation",
+      "order": 12,
+      "title": "Head turn with anticipation",
+      "target_query": "head turn animation exercise",
+      "difficulty": "Advanced",
+      "summary": "Head turn with a blink, 48-72 frames at 24 fps",
+      "description": "Animate a head turn with anticipation, a blink and overlap: 48-72 frames at 24 fps. Free contact sheets, AI review for $9.",
+      "brief": [
+        "Animate a character's head turning from looking at the camera to looking off to one side, about 90 degrees.",
+        "Add a small anticipation dip before the turn, ease in and out of the move, a blink during the turn (the classic way to sell a change of thought) and a little overlap as the head settles.",
+        "Still camera framing head and shoulders, 48 to 72 frames at 24 fps. Any simple rigged head works; a sphere with eyes is fine."
+      ],
+      "reference": {
+        "svg": "assets/ref/head-turn-anticipation.svg",
+        "alt": "Reference motion diagram for Head turn with anticipation: a top view of a head with an arc from facing front to facing right, a small dip before the turn, and the blink marked at the middle of the arc.",
+        "width": 640,
+        "height": 400
+      },
+      "spec": {
+        "fps": 24,
+        "frames_min": 48,
+        "frames_max": 72,
+        "camera": "front",
+        "key_pose_times": [
+          {
+            "frame": 1,
+            "label": "Hold, looking at camera"
+          },
+          {
+            "frame": 10,
+            "label": "Anticipation dip"
+          },
+          {
+            "frame": 18,
+            "label": "Turn starts, blink"
+          },
+          {
+            "frame": 26,
+            "label": "Middle of the turn"
+          },
+          {
+            "frame": 36,
+            "label": "Overshoot"
+          },
+          {
+            "frame": 44,
+            "label": "Settled, looking off"
+          }
+        ]
+      },
+      "spec_list": [
+        "Length: 48-72 frames at 24 fps (2-3 s)",
+        "About a 90-degree turn",
+        "Anticipation dip before the turn",
+        "A blink during the turn",
+        "Ease in and out; a small overshoot and settle",
+        "Export: H.264 MP4 or a PNG sequence"
+      ],
+      "pass_bar": 80,
+      "rubric": [
+        {
+          "id": "frames",
+          "title": "Length and frame rate, measured",
+          "weight": 10,
+          "grader": "measured",
+          "good": "48-72 frames at 24 fps.",
+          "descriptors": {
+            "10": "Frame count and frame rate match the spec.",
+            "7": "One of the two is off by a little.",
+            "4": "The frame rate is wrong or the clip is far too long or short.",
+            "0": "Both are wrong."
+          }
+        },
+        {
+          "id": "anticipation",
+          "title": "Anticipation",
+          "weight": 20,
+          "grader": "ai",
+          "good": "A small dip or counter-move before the turn that reads but does not distract.",
+          "descriptors": {
+            "10": "Clear, subtle anticipation.",
+            "7": "Present but too big or too small.",
+            "4": "Barely visible.",
+            "0": "None."
+          }
+        },
+        {
+          "id": "timing",
+          "title": "Timing and easing",
+          "weight": 25,
+          "grader": "ai",
+          "good": "Slow out of the hold, fast through the middle, slow into the new direction.",
+          "descriptors": {
+            "10": "Clear ease in and out with a confident middle.",
+            "7": "Easing present but uneven.",
+            "4": "Mostly even, robotic timing.",
+            "0": "Timing contradicts the move."
+          }
+        },
+        {
+          "id": "blink",
+          "title": "Blink and thought change",
+          "weight": 25,
+          "grader": "ai",
+          "good": "A blink placed during the turn that sells the change of thought; eyes lead the head.",
+          "descriptors": {
+            "10": "Well-placed blink; eyes lead the turn.",
+            "7": "Blink present but mistimed.",
+            "4": "No blink, or eyes locked to the head.",
+            "0": "Neither blink nor eye movement."
+          }
+        },
+        {
+          "id": "arcs",
+          "title": "Arcs and overlap",
+          "weight": 20,
+          "grader": "ai",
+          "good": "The head travels on an arc (a slight dip mid-turn), overshoots a little and settles.",
+          "descriptors": {
+            "10": "Clean arc and a natural settle.",
+            "7": "Clean arc, settle too stiff or too wobbly.",
+            "4": "Flat, linear move.",
+            "0": "No readable arc."
+          }
+        },
+        {
+          "id": "polish",
+          "title": "Polish, observed",
+          "weight": 0,
+          "grader": "observed",
+          "good": "Notes beyond the rubric: brow or neck overlap, the final hold.",
+          "descriptors": {
+            "10": "Noted, not scored.",
+            "7": "Noted, not scored.",
+            "4": "Noted, not scored.",
+            "0": "Noted, not scored."
+          }
+        }
+      ],
+      "export": {
+        "blender": [
+          "Output Properties: Frame Rate 24 fps, Frame Start and End set to your shot.",
+          "Output: File Format FFmpeg Video, Container MPEG-4, Video Codec H.264. Or File Format PNG for a frame sequence.",
+          "Look through your side camera, then View > Viewport Render Animation."
+        ],
+        "maya": [
+          "Set the scene to 24 fps (Preferences > Settings > Working Units > Time) and the Time Slider to your shot.",
+          "Windows > Playblast options: Format image, Encoding png. QuickTime and AVI playblasts don't open in browsers.",
+          "Playblast from your side camera, then drop all the PNG frames together."
+        ],
+        "3dsmax": [
+          "Set Time Configuration to 24 fps and the range to your shot.",
+          "Tools > Preview - Grab Viewport > Create Preview Animation, or Render Setup > Common: Range, Render Output saved as PNG.",
+          "Drop the PNG sequence (all frames at once)."
+        ],
+        "other": [
+          "Any tool: export an H.264 MP4 or a numbered PNG sequence (shot_0001.png, shot_0002.png ...).",
+          "24 fps, a still camera, head and shoulders fully in frame."
+        ]
+      },
+      "graded": {
+        "edge_flow": false
+      }
+    }
+  ]
+}

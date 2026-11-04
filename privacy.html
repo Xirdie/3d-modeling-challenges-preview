@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<!-- head:start -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; font-src 'self'; connect-src 'self' https: blob: data: http://localhost:* http://127.0.0.1:*; frame-src https://challenges.cloudflare.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin">
+<title>Privacy | CritPass</title>
+<meta name="description" content="What CritPass sends, stores and deletes: your 3D file never leaves your browser, only snapshots are sent and none are stored, progress stays on your device.">
+<link rel="canonical" href="https://tools.xirdie.com/3d-modeling-challenges-preview/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CritPass">
+<meta property="og:title" content="Privacy | CritPass">
+<meta property="og:description" content="What CritPass sends, stores and deletes: your 3D file never leaves your browser, only snapshots are sent and none are stored, progress stays on your device.">
+<meta property="og:url" content="https://tools.xirdie.com/3d-modeling-challenges-preview/privacy.html">
+<meta property="og:image" content="https://tools.xirdie.com/3d-modeling-challenges-preview/assets/og/index.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Privacy | CritPass">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy | CritPass">
+<meta name="twitter:description" content="What CritPass sends, stores and deletes: your 3D file never leaves your browser, only snapshots are sent and none are stored, progress stays on your device.">
+<meta name="twitter:image" content="https://tools.xirdie.com/3d-modeling-challenges-preview/assets/og/index.jpg">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161a" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="assets/site.css">
+<script src="config.js"></script>
+<script type="module" src="assets/app.js"></script>
+<!-- head:end -->
+</head>
+<body data-page="legal">
+<!-- header:start -->
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__in">
+    <a class="wordmark" href="index.html"><svg class="wordmark__mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.5 17 6.5 10 10.5 3 6.5Z" fill="var(--c-accent)"/><path d="M10 2.5 17 6.5 10 10.5 3 6.5Z M3 6.5V13.5L10 17.5 17 13.5V6.5 M10 10.5V17.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>Crit<span class="wordmark__pass">Pass</span></span></a>
+    <nav class="site-nav" aria-label="Main"><a href="index.html#challenges">Challenges</a><a href="index.html#pricing">Pricing</a></nav>
+  </div>
+</header>
+<div class="banners" id="banners"></div>
+<!-- header:end -->
+<main id="main">
+  <h1>Privacy</h1>
+  <p class="muted">CritPass, by the studio at business@xirdie.com. Last updated 2026-10-31.</p>
+  <h2>The short version</h2>
+  <ul class="promises">
+    <li>Your 3D file or video never leaves your browser; only rendered snapshots are sent, for a review.</li>
+    <li>Up to 7 snapshot images (12 on Deep, 3 for a quick review) and your mesh counts are sent once to Anthropic (Claude) to write the review; we store none of them, and Anthropic keeps them only as its <a href="https://privacy.anthropic.com/" rel="noopener">API data-retention policy</a> states.</li>
+    <li>Your progress is stored only in your browser; you can export it as a file.</li>
+    <li>Your payment details and checkout email are held only by Stripe. We see an email address only if you type one into the bug form.</li>
+    <li>A keyed hash of your IP address, kept 48 hours, limits free reviews and bug reports.</li>
+    <li>Our Worker, the Turnstile check and our cookieless analytics run on Cloudflare, which sees your IP address and browser signals as any host does.</li>
+    <li>Bug reports (what happened, the page, your browser, a masked checkout id (its last 8 characters) if any, and your email if you give it) go to our private records; the email is used only to reply.</li>
+    <li>Contact: business@xirdie.com.</li>
+  </ul>
+
+  <h2>What leaves your browser</h2>
+  <p>Your browser opens your OBJ, GLB, glTF or FBX file, or your video or frames, and renders everything on your own machine: the turntable, the wireframe, the silhouette, the counts and the contact sheets. Nothing is uploaded to show the preview, and the free topology score costs nothing to compute because it never leaves your device.</p>
+  <p>When you ask for a review, your browser sends our Worker only: the rendered JPEG snapshots (3 small ones for a quick review, 7 for a full review, 12 on Deep), your mesh counts or frame facts (numbers such as face counts, frame rate and size), the challenge id, a random job id and, for a paid review, your unlock token. The 3D file, the video and the frames themselves are never sent.</p>
+
+  <h2>Who processes it</h2>
+  <ul>
+    <li><strong>Anthropic (Claude)</strong> writes the review. Our Worker passes the snapshots to Anthropic's API in memory for one review call, under Anthropic's <a href="https://www.anthropic.com/legal/commercial-terms" rel="noopener">commercial terms</a>, which do not allow training on them. We store none of the snapshots, prompts or reviews: nothing is written to our storage or logs. Our logs hold only a checkout id and an error reason when something fails, and token counts for cost tracking.</li>
+    <li><strong>Stripe</strong> runs checkout. Your email and card details go to Stripe, not to us. We read your checkout session from Stripe with a read-only key to confirm the payment and which product you bought.</li>
+    <li><strong>Cloudflare</strong> runs our Worker, the Turnstile check on the free quick review and the bug form, and Web Analytics. Like any host, it sees your IP address and browser signals. Web Analytics sets no cookies, so there is no cookie banner.</li>
+    <li><strong>GitHub Pages</strong> serves these pages.</li>
+  </ul>
+
+  <h2>What our Worker stores</h2>
+  <ul>
+    <li>For a single review: a record that your checkout session was used (so it runs once), kept 30 days.</li>
+    <li>For a pack: the number of reviews left, the checkout ids that credited it and the state of the last failed job, under Stripe's customer id, kept while CritPass runs so the pack never expires. Nothing personal beyond that id.</li>
+    <li>For a monthly plan: a count of reviews used in the current billing period, kept 40 days. Whether the plan is active is asked of Stripe each time, never stored.</li>
+    <li>Daily counters for free quick reviews, owner-code reviews, wrong codes and bug reports, keyed by the date and a keyed hash of your IP address (never the address itself), kept 48 hours.</li>
+    <li>Bug reports, until our weekly import (below).</li>
+  </ul>
+
+  <h2>What stays in your browser</h2>
+  <ul>
+    <li><strong>Progress</strong> (localStorage): per challenge, your best grade, your last review and one small thumbnail; your restore code and the reviews left on a pack or plan (and an earlier pack's or plan's, if a later checkout replaced it in this browser); an owner code if you saved one; the challenge and export tab you last opened.</li>
+    <li><strong>Your last capture</strong> (IndexedDB): the snapshots and counts of the file you dropped, kept so a review can start after checkout or after you close the tab. It is deleted as soon as your review is saved.</li>
+    <li><strong>This visit</strong> (sessionStorage): the campaign tags (utm) of the link you arrived by, and a note that you opened checkout, so we can say "Checkout closed" if you come back without paying.</li>
+  </ul>
+  <p>"Clear my data" in the footer deletes all of it from this browser. "Export my progress" is the only backup: we hold no copy, because there are no accounts.</p>
+
+  <h2>Bug reports</h2>
+  <p>The "Report a problem" form sends what you write, the page address, your browser's user agent, a masked checkout id (only its last 8 characters, so it can't be used to restore a purchase) if you have one and your email only if you type it. It is stored on Cloudflare until our weekly import, then moved into the studio's private records (a private git repository), so we can't promise to delete it later. The email is used only to reply to you.</p>
+
+  <h2>Analytics</h2>
+  <p>Cloudflare Web Analytics counts page views without cookies. To see which links lead to a purchase, a page view named after the step (for example "checkout") and the link's campaign tags is recorded when you start checkout, run a review or download a file. Ad blockers often block it, and that is fine.</p>
+
+  <h2>Faces and documents</h2>
+  <p>CritPass is for your own modeling and animation exercises. It doesn't ask for faces or documents and nothing needs a deletion schedule, because nothing you send is kept.</p>
+
+  <h2>Contact</h2>
+  <p>Questions or requests: <a href="mailto:business@xirdie.com">business@xirdie.com</a>.</p>
+</main>
+<!-- footer:start -->
+<footer class="site-footer">
+  <div class="site-footer__in">
+    <p class="site-footer__ai">Reviews are written by AI (Claude, by Anthropic) against each challenge's published rubric; topology counts are measured by code.</p>
+    <ul class="footer-links">
+      <li><button type="button" class="footer-link" data-panel="bug" aria-expanded="false" aria-controls="panel-bug">Report a problem</button></li>
+      <li><a class="footer-link" href="privacy.html">Privacy</a></li>
+      <li><a class="footer-link" href="terms.html">Terms</a></li>
+      <li><a class="footer-link" id="portal-link" href="https://billing.stripe.com/p/login/00w5kCbck3583pQfGLb7y00" rel="noopener">Manage subscription</a></li>
+      <li><button type="button" class="footer-link" data-panel="restore" aria-expanded="false" aria-controls="panel-restore">Restore purchase</button></li>
+      <li><button type="button" class="footer-link" data-panel="code" aria-expanded="false" aria-controls="panel-code">Owner code</button></li>
+      <li><button type="button" class="footer-link" data-panel="clear" aria-expanded="false" aria-controls="panel-clear">Clear my data</button></li>
+      <li><a class="footer-link" href="mailto:business@xirdie.com">business@xirdie.com</a></li>
+      <li><a class="footer-link" href="https://tools.xirdie.com/">More tools</a></li>
+    </ul>
+    <section class="panel" id="panel-bug" data-state="closed" aria-labelledby="bug-h" hidden>
+      <h2 id="bug-h">Report a problem</h2>
+      <form id="bug-form" novalidate>
+        <label for="bug-text">What happened?</label>
+        <textarea id="bug-text" name="report" rows="4" maxlength="2000" required></textarea>
+        <p class="counter" id="bug-count" aria-live="polite" hidden></p>
+        <label for="bug-email">Email (optional, only used to reply)</label>
+        <input type="email" id="bug-email" name="email" maxlength="200" autocomplete="email">
+        <p class="muted" id="bug-also">We also send the page address, your browser name and version, and the last 8 characters of your checkout id if you have one. No files or snapshots.</p>
+        <div class="turnstile" id="bug-ts"></div>
+        <div class="alert alert--error" id="bug-msg" role="alert" hidden></div>
+        <button type="submit" class="btn btn--primary">Send report</button>
+      </form>
+      <div class="note" id="bug-done" role="status" hidden></div>
+    </section>
+    <section class="panel" id="panel-restore" data-state="closed" aria-labelledby="restore-h" hidden>
+      <h2 id="restore-h">Restore purchase</h2>
+      <div class="field">
+        <label for="restore-id">Checkout id (restore code)</label>
+        <input id="restore-id" type="text" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="cs_live_..." aria-describedby="restore-help">
+        <p class="muted" id="restore-help">It's the restore code shown after your purchase. Lost it? Email business@xirdie.com from the address you paid with.</p>
+      </div>
+      <button type="button" class="btn btn--primary" id="restore-go">Restore</button>
+      <div id="restore-msg" hidden></div>
+    </section>
+    <section class="panel" id="panel-code" data-state="closed" aria-labelledby="code-h" hidden>
+      <h2 id="code-h">Owner code</h2>
+      <div id="code-form" class="field">
+        <label for="code-input">Code</label>
+        <input id="code-input" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <p class="btn-row"><button type="button" class="btn btn--secondary" id="code-show" aria-pressed="false" aria-controls="code-input">Show</button> <button type="button" class="btn btn--primary" id="code-save">Save code</button></p>
+        <p class="muted">Saved in this browser only. With a code, the review button runs a full review (3 a day).</p>
+      </div>
+      <div id="code-saved" hidden>
+        <p>A code is saved in this browser. <button type="button" class="btn btn--secondary" id="code-remove">Remove code</button></p>
+      </div>
+    </section>
+    <section class="panel" id="panel-clear" data-state="closed" aria-labelledby="clear-h" hidden>
+      <h2 id="clear-h">Clear my data</h2>
+      <p>This deletes your progress, saved reviews, restore code and owner code from this browser. We hold no account or files to delete; <a href="privacy.html">Privacy</a> says what our Worker keeps.</p>
+      <p class="btn-row"><button type="button" class="btn btn--secondary" id="clear-export">Export my progress first</button> <button type="button" class="btn btn--secondary" id="clear-delete">Delete everything</button></p>
+      <p class="note" id="clear-done" role="status" tabindex="-1" hidden>Done: this browser holds nothing from CritPass.</p>
+      <details>
+        <summary>(Import a progress file)</summary>
+        <p class="field"><label for="import-file">Progress file (.json)</label> <input type="file" id="import-file" accept=".json,application/json"></p>
+        <p id="import-msg" hidden></p>
+      </details>
+    </section>
+    <div id="live" class="visually-hidden" role="status" aria-live="polite"></div>
+  </div>
+</footer>
+<!-- footer:end -->
+<style>#studio-preview{position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#111;color:#fff;font:13px/1.4 system-ui,sans-serif;padding:8px 14px;text-align:center;opacity:.93}#studio-preview code{color:#9cf}</style>
+<div id="studio-preview">Preview build 1 - not public - purchases disabled. Notes: <code>studio.py feedback 3d-modeling-challenges "..."</code> &middot; approve: <code>studio.py approve 3d-modeling-challenges</code></div>
+</body>
+</html>
